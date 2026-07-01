@@ -6,7 +6,7 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "romy.design.graphique — Portfolio" },
-      { rel: "icon", type: "image/png", href: "/favicon.png" },
+      { tagName: "link", rel: "icon", type: "image/png", href: "/favicon.png" },
       { name: "description", content: "Portfolio de Romy, graphiste freelance à Poitiers. Identité visuelle et sites vitrines pour entrepreneurs locaux." },
       { property: "og:title", content: "romy.design.graphique — Portfolio" },
       { property: "og:description", content: "Identité visuelle et sites vitrines pour entrepreneurs locaux." },
