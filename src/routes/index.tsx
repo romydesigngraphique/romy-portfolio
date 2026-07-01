@@ -16,7 +16,7 @@ export const Route = createFileRoute("/")({
 });
 
 const Star = ({ className = "" }: { className?: string }) => (
-  <span className={`inline-block ${className}`} aria-hidden>✳</span>
+  <span className={`inline-block ${className}`} aria-hidden>✳︎</span>
 );
 
 const logoR = { url: "/images/logo.png" };
