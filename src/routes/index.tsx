@@ -1,5 +1,6 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
+import ContactModal from "./ContactModal";
+import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -436,7 +437,7 @@ function Packs() {
   );
 }
 
-function Contact() {
+function Contact({ onOpen }: { onOpen: () => void }) {
   return (
     <section id="contact" className="relative px-5 md:px-10 py-28 md:py-40 overflow-hidden">
       <div aria-hidden className="absolute inset-0 bg-gradient-brand" />
@@ -450,14 +451,14 @@ function Contact() {
           Envoie-moi un message, je réponds sous 24h.
         </p>
         <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-          <a href="mailto:romy.design.graphique@gmail.com" className="px-8 py-4 rounded-full bg-white text-foreground font-semibold hover:scale-[1.03] transition shadow-xl">
-            Me contacter
-          </a>
+          <button onClick={onOpen} className="px-8 py-4 rounded-full bg-white text-foreground font-semibold hover:scale-[1.03] transition">
+  Me contacter
+</button>
         </div>
         <div className="mt-10 text-sm text-white/90 text-center">
   <a href="https://instagram.com/romy.design.graphique" target="_blank" rel="noreferrer" className="hover:text-white">@romy.design.graphique</a>
 </div>
-      </div>
+    </div>
     </section>
   );
 }
@@ -477,6 +478,7 @@ function Footer() {
 }
 
 function Index() {
+  const [modalOpen, setModalOpen] = useState(false);
   return (
     <div className="bg-background text-foreground">
       <Nav />
@@ -488,9 +490,10 @@ function Index() {
         <Process />
         <Prestations />
         <Packs />
-        <Contact />
-      </main>
-      <Footer />
+       <Contact onOpen={() => setModalOpen(true)} />
+          <ContactModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
+        </main>
+        <Footer />
     </div>
   );
 }
